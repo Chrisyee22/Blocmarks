@@ -2,7 +2,7 @@ class User < ApplicationRecord
 before_save { self.email = email.downcase }
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
+         :recoverable, :rememberable, :trackable, :confirmable,  :validatable, authentication_keys: [:login]
   attr_accessor :login
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
