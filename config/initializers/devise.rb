@@ -18,7 +18,7 @@ Devise.setup do |config|
   #login with username
   config.reset_password_keys = [:login]
   config.confirmation_keys = [:login]
-
+  config.allow_unconfirmed_access_for = 365.days
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

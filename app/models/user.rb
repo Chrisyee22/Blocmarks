@@ -7,6 +7,7 @@ before_save { self.email = email.downcase }
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -15,4 +16,10 @@ before_save { self.email = email.downcase }
         where(conditions.to_h).first
       end
     end
+    
+    protected
+    def confirmation_required?
+      false
+    end
+  has_many :topics
 end
