@@ -3,8 +3,8 @@ require 'faker'
 3.times do
   pw = Faker::Internet.password(6)
   User.create!(
-    username: Faker::Name.name,
-    email: Faker::Internet.email,
+    username: Faker::Internet.unique.user_name(6..12),
+    email: Faker::Internet.unique.safe_email,
     password: pw,
     password_confirmation: pw,
     confirmed_at: Time.now.utc

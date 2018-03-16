@@ -16,7 +16,11 @@ before_save { self.email = email.downcase }
         where(conditions.to_h).first
       end
     end
-    
+
+    def to_s
+    username  
+    end
+
     protected
     def confirmation_required?
       false
