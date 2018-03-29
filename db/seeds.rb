@@ -24,7 +24,8 @@ topics = Topic.all
 24.times do
   Bookmark.create!(
     topic: topics.sample,
-    url: Faker::Internet.url
+    url: Faker::Internet.url,
+    user: users.sample
   )
 end
 

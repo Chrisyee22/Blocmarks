@@ -18,7 +18,7 @@ before_save { self.email = email.downcase }
     end
 
     def to_s
-    username  
+    username
     end
 
     protected
@@ -26,4 +26,5 @@ before_save { self.email = email.downcase }
       false
     end
   has_many :topics
+  has_many :bookmarks, dependent: :destroy
 end
