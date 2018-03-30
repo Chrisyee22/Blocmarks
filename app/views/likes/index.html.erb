@@ -1,0 +1,6 @@
+<% @likes.each do |like| %>
+  <div>
+    <p>User: <%= like.user_id %></p>
+    <p>Bookmark: <%= like.bookmark.id %></p>
+  </div>
+<% end %>

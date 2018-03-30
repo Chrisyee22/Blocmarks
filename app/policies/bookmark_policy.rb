@@ -1,2 +1,2 @@
 class BookmarkPolicy < ApplicationPolicy
-end 
+end

@@ -1,6 +1,14 @@
 class User < ApplicationRecord
 before_save { self.email = email.downcase }
 
+has_many :topics
+has_many :bookmarks, dependent: :destroy
+has_many :likes, dependent: :destroy
+
+def liked(bookmark)
+  likes.where(bookmark_id: bookmark.id).first
+end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable,  :validatable, authentication_keys: [:login]
   attr_accessor :login
@@ -18,13 +26,11 @@ before_save { self.email = email.downcase }
     end
 
     def to_s
-    username
+     username
     end
 
     protected
     def confirmation_required?
       false
     end
-  has_many :topics
-  has_many :bookmarks, dependent: :destroy
 end
