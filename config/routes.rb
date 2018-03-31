@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks do
-    resources :like, only: [:index, :create, :destroy]
+    resources :likes, only: [:index, :create, :destroy]
   end
 
   devise_for :users
