@@ -4,7 +4,8 @@ class BookmarksController < ApplicationController
   end
 
   def new
-    @bookmark = Bookmark.new
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = Bookmark.new(:topic => @topic)
   end
 
   def create
@@ -13,7 +14,7 @@ class BookmarksController < ApplicationController
     @bookmark.topic_id = params[:topic_id]
     @bookmark.user = current_user
     authorize @bookmark
-    
+
     if @bookmark.save
       flash[:notice] = "Bookmark was saved successfully."
       redirect_to topic_path(params[:topic_id])

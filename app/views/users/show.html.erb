@@ -1,0 +1,28 @@
+<h1><%= @user.username %>'s bookmarks</h1>
+
+<div class="row">
+  <h3> Bookmarks </h3>
+  <div class="col-md-8">
+    <% @user_bookmarks.each do |bookmark| %>
+      <div class="bookmark-holder">
+        <div class="space-maker"></div>
+        <h5 class="text-center"><%= bookmark.url %></h5>
+        <%= link_to "Delete", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <h3> Liked Bookmarks </h3>
+  <div class="col-md-8">
+    <% @liked_bookmarks.each do |like| %>
+      <% bookmark = Bookmark.find(like.bookmark_id) %>
+        <div class="space-maker"></div>
+        <h5 class="text-center"><%= bookmark.url %></h5>
+        <%= link_to [bookmark, like], class: 'btn btn-danger', method: :delete do %>
+          <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+        <% end %>
+      </div>
+    <% end %>
+  </div>

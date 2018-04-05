@@ -9,6 +9,7 @@ def liked(bookmark)
   likes.where(bookmark_id: bookmark.id).first
 end
 
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable,  :validatable, authentication_keys: [:login]
   attr_accessor :login
