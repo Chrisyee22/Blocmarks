@@ -5,7 +5,7 @@ RSpec.describe BookmarksController, type: :controller do
   let(:user){User.create!(username: "BlocmarksUser", email: "user@blocmarks.com", password: "helloworld") }
   let (:url){Faker::Internet.url}
   let(:my_topic){Topic.create!( title:title, user: user)}
-  let(:my_bookmark){Bookmark.create!(url: url, topic: my_topic)}
+  let(:my_bookmark){Bookmark.create!(url: url, topic: my_topic, user: user)}
 
   before do
     sign_in user
